@@ -1,9 +1,3 @@
-var width = 960,
-    height = 600;
-
-d3.select("#map")
-    .style("width", width)
-    .style("height", height);
 
 // https://d3-geomap.github.io/map/choropleth/world/
 
