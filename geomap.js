@@ -1,44 +1,28 @@
-
 var width = 960,
     height = 600;
 
-var rateById = d3.map();
+d3.select("#map")
+    .style("width", width)
+    .style("height", height);
 
-var quantize = d3.scale.quantize()
-    .domain([0, .15])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+// https://d3-geomap.github.io/map/choropleth/world/
 
-var projection = d3.geo.albersUsa()
-    .scale(1280)
-    .translate([width / 2, height / 2]);
-
-var path = d3.geo.path()
-    .projection(projection);
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-queue()
-    .defer(d3.json, "/mbostock/raw/4090846/us.json")
-    .defer(d3.tsv, "unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
-    .await(ready);
-
-function ready(error, us) {
-  if (error) throw error;
-
-  svg.append("g")
-      .attr("class", "counties")
-    .selectAll("path")
-      .data(topojson.feature(us, us.objects.counties).features)
-    .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
-      .attr("d", path);
-
-  svg.append("path")
-      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-      .attr("class", "states")
-      .attr("d", path);
+var format = function(d) {
+    d = d / 1000;
+    return d3.format(',.02f')(d) + 'K';
 }
 
-d3.select(self.frameElement).style("height", height + "px");
+var map = d3.geomap.choropleth()
+    .geofile('countries.json')
+    .colors(colorbrewer.YlGnBu[9])
+    .column('2013-2017')
+    .format(format)
+    .legend(true)
+    .unitId('Country Code');
+
+d3.csv('water_resources_1yr.csv', function(error, data) {
+    console.log(data);
+    d3.select('#map')
+        .datum(data)
+        .call(map.draw, map);
+});

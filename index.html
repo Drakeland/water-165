@@ -3,15 +3,23 @@
 <head>
     <meta charset="utf-8">
     <title>D3 Zoomable Scatterplot</title>
-
-    <link rel="stylesheet" type="text/css" href="scatterstylesheet.css">
+    
+    <!-- CSS files-->
+    <link rel="stylesheet" type="text/css" href="geomap.css">
+    <link rel="stylesheet" type="text/css" href="d3.geomap.css">
+    
+    <!-- JS files-->
     <script type= "text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type= "text/javascript" src="d3.geomap.dependencies.min.js"></script>
+    <script type= "text/javascript" src="d3.geomap.js"></script>
 </head>
 <body>
-    <h1 style = "text-align:center; color:steelblue">Renewable Water Resources</h1>
+    <h1>Renewable Water Resources</h1>
+    
+    <script type="text/javascript" src="geomap.js"></script>
 
-    <script type="text/javascript" src="scatterplot.js"></script>
-
+    <div id="map"></div>
+    
     <h4>Description</h4>
     <p>Water water water water water.</p>
 
@@ -34,18 +42,20 @@
     <ul>
         <li>index.html</li>
         <li>geomap.js</li>
-        <li>style.css</li>
+        <li>geomap.css</li>
+        <li>water_resources_1yr.csv</li>
     </ul>
 
     <h4>Data Sources</h4>
     <ul>
-        <li><a href="http://chimera.labs.oreilly.com/books/1230000000345/ch10.html">Interactive Data Visualization for the Web Chapter 10 (Section: Tooltips)</a></li>
-        <li><a href="http://bl.ocks.org/mbostock/3892919">Pan + Zoom by Mike Bostock</a></li>
+        <li><a href="http://www.fao.org/nr/water/aquastat/data/query/index.html">FAO Aquastat</a></li>
     </ul>
 
     <h4>Code/Visualization Sources</h4>
     <ul>
-        <li><a href=""></a></li>
+        <li><a href="https://d3-geomap.github.io/map/choropleth/world/">Chloropleth Map: World</a></li>
+        <li><a href="https://d3-geomap.github.io/">d3.geomap</a></li>
+        <li><a href="http://chimera.labs.oreilly.com/books/1230000000345/ch10.html">Interactive Data Visualization for the Web Chapter 12</a></li>
     </ul>
 
     <h4>Source code available <a href="https://github.com/Drakeland/water-165">here</a>.</h4>
