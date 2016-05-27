@@ -4,12 +4,19 @@ body {
 h1 {
     text-align: center;
     color: steelblue;
+    margin-bottom: 0;
+}
+h2.units{
+    text-align: center;
+    color: lightsteelblue;
+    margin-top: 0;
+    padding-top: 0;  
 }
 h4 {
     margin-bottom: -1em;
 }
 #map {
-    width: 960px;
+    width: 1060px;
     height: 600px;
     margin: 0 auto;
 }
