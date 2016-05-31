@@ -9,8 +9,6 @@ var format = function(d) {
 //updates the year to display, changing colors and tooltip values
 var updateYear = function(newYear) {
    d3.select('.yearlabel').text("Current year:" + newYear);
-   map.updateColumn(newYear);
-   
    map.properties.column = newYear;
 
    // Add new fill styles based on data values.
