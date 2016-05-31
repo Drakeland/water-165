@@ -8,7 +8,7 @@ var format = function(d) {
 
 var map = d3.geomap.choropleth()
     .geofile('countries.json')
-    .column('2013-2017')
+    .column('2014')
     .colors(colorbrewer.RdYlBu[9])
     .domain([1000, 10000])
     .format(format)
@@ -16,7 +16,7 @@ var map = d3.geomap.choropleth()
     .unitId('Country Code')
     .scale(0,100000);
 
-d3.csv('water_resources_1yr.csv', function(error, data) {
+d3.csv('water_res_full_formatted.csv', function(error, data) {
     console.log(data);
     d3.select('#map')
         .datum(data)
