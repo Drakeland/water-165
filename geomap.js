@@ -43,7 +43,8 @@ var stepYear = function() {
 }
 
 animate = function() {
-    setInterval(stepYear, 1000);
+    var interval = setInterval(stepYear, 1000);
+    setTimeout(clearInterval, 1000*years.length+1, interval);
 }
 
 var map = d3.geomap.choropleth()
