@@ -8,7 +8,7 @@ var format = function(d) {
 
 //updates the year to display, changing colors and tooltip values
 var updateYear = function(newYear) {
-   d3.select('.yearlabel').text("Current year:" + newYear);
+   d3.select('.yearlabel').text("Current year: " + newYear);
    map.properties.column = newYear;
 
    // Add new fill styles based on data values.
@@ -31,6 +31,19 @@ var updateYear = function(newYear) {
            unit.select('title').text('' + text + '\n\n' + map.properties.column + ': ' + val);
        }
    });
+}
+
+var years = ['1962', '1967', '1972', '1977', '1982', '1987',
+             '1992', '1997', '2002', '2007', '2012', '2014'];
+
+var stepYear = function() {
+    if (typeof stepYear.i == 'undefined') stepYear.i = 0;
+    updateYear(years[stepYear.i]);
+    stepYear.i = (stepYear.i + 1) % years.length;
+}
+
+animate = function() {
+    setInterval(stepYear, 1000);
 }
 
 var map = d3.geomap.choropleth()
