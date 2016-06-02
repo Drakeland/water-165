@@ -3,7 +3,7 @@
 
 var format = function(d) {
     d = d / 1000;
-    return d3.format(',.02f')(d) + ' K';
+    return d3.format(',.0f')(d) + ' K';
 }
 
 //updates the year to display, changing colors and tooltip values
@@ -23,8 +23,14 @@ var updateYear = function(newYear) {
 
        // Data can contain values for non existing units.
        if (!unit.empty()) {
-           if (map.properties.duration) unit.transition().duration(map.properties.duration).style('fill', fill);else unit.style('fill', fill);
-
+           if (map.properties.duration) {
+               unit.transition()
+                   .duration(map.properties.duration)
+                   .style('fill', fill);
+           } else {
+               unit.style('fill', fill);
+           }
+           
            // New title with column and value.
            var text = map.properties.unitTitle(unit.datum());
            val = map.properties.format(val);
@@ -42,8 +48,10 @@ var stepYear = function() {
     stepYear.i = (stepYear.i + 1) % years.length;
 }
 
-animate = function() {
-    setInterval(stepYear, 1000);
+var animate = function() {
+    var interval = setInterval(stepYear, 1000),
+        duration = 1000 * years.length + 1;
+    setTimeout(clearInterval, duration, interval);
 }
 
 var map = d3.geomap.choropleth()
@@ -65,6 +73,8 @@ var slider = d3.slider()
     .tickFormat(d3.format("d"));
 
 d3.csv('water_res_full_formatted.csv', function(error, data) {
+    if (error) console.log(error);
+    
     console.log(data);
     d3.select('#map')
         .datum(data)
