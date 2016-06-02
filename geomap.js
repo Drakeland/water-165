@@ -43,8 +43,7 @@ var stepYear = function() {
 }
 
 animate = function() {
-    var interval = setInterval(stepYear, 1000);
-    setTimeout(clearInterval, 1000*years.length+1, interval);
+    setInterval(stepYear, 1000);
 }
 
 var map = d3.geomap.choropleth()
@@ -58,10 +57,15 @@ var map = d3.geomap.choropleth()
     .scale(0,100000)
     .duration('1000');
 
+var slider = d3.slider().min(1962).max(2014).tickValues([1962,1967,1972,1977,1982,1987,1992,1997,2002,2007,2012,2014]).stepValues([1962,1967,1972,1977,1982,1987,1992,1997,2002,2007,2012,2014]);
+
 d3.csv('water_res_full_formatted.csv', function(error, data) {
     console.log(data);
     d3.select('#map')
         .datum(data)
        .call(map.draw, map);
+    
+ d3.select('#slider').call(slider);
 });
+
 
