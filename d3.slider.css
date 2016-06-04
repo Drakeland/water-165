@@ -5,7 +5,7 @@
 }
 
 .d3slider-rect-range {
-  fill: #777;
+  fill: #fff;
   stroke: none;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .d3slider-axis path {
-  display: none;
+/*  display: none;*/
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
@@ -66,7 +66,7 @@
 }
 
 .dragger-inner {
-  fill: #B30424;
+  fill: #5bc0de;
   stroke: none;
 }
 

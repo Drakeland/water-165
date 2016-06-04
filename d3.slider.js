@@ -5,7 +5,7 @@ d3.slider = function module() {
   height=40, rect,
   rectHeight = 12,
   tickSize = 6,
-  margin = {top: 25, right: 25, bottom: 15, left: 25}, 
+  margin = {top: 15, right: 15, bottom: 15, left: 25}, 
   ticks = 0, tickValues, scale, tickFormat, dragger, width, 
   range = false,
   callbackFn, stepValues, focus;
@@ -96,7 +96,7 @@ d3.slider = function module() {
 
       dragger.append("circle")
       .attr("class", "dragger-outer")
-      .attr("r", 10)
+      .attr("r", 8)
       .attr("transform", function(d) {
         return "translate(0,6)";
       });

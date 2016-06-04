@@ -26,9 +26,26 @@ h4 {
 }
 
 #map {
-    width: 1060px;
+    width: 1460px;
     height: 600px;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
+}
+
+#interactivity {
+    margin-top: 140px;
+    padding-top: 10px;
+}
+
+#play {
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+#slider {
+    display: inline-block;
+    width: 80%;
+    margin-left: 50px;
+    padding: 0;
 }
 
 .yearlabel {
