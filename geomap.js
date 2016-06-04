@@ -55,7 +55,14 @@ var animateIt = function() {
     var interval = setInterval(stepYear, 1000),
         duration = 1000 * years.length + 1;
     
-    setTimeout(clearInterval, duration, interval);
+    // disable play button
+    document.getElementById("play").setAttribute('disabled', 'disabled');
+    
+    setTimeout(function(i) {
+        clearInterval(i);
+        // re-enable play button after animation finishes
+        document.getElementById("play").removeAttribute('disabled');
+    }, duration, interval);
 }
 
 var map = d3.geomap.choropleth()
