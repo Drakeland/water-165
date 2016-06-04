@@ -1,21 +1,30 @@
 body {
     font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
 }
+
 h1 {
     text-align: center;
     color: steelblue;
     margin-bottom: -10px;
     margin-top: -5px;
 }
+
 h2.units{
     text-align: center;
     color: lightsteelblue;
     margin-top: 0;
     padding-top: 0;  
 }
+
 h4 {
     margin-bottom: -1em;
+    font-weight: normal;
 }
+
+.description, h4, ul {
+    font-size: 10pt;
+}
+
 #map {
     width: 1060px;
     height: 600px;

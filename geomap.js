@@ -8,11 +8,11 @@ var format = function(d) {
 
 //updates the year to display, changing colors and tooltip values
 var updateYear = function(newYear) {
-   d3.select('.yearlabel').text("Current year: " + newYear);
-   map.properties.column = newYear;
+    d3.select('.yearlabel').text("Current year: " + newYear);
+    map.properties.column = newYear;
 
-   // Add new fill styles based on data values.
-   map.data.forEach(function (d) {
+    // Add new fill styles based on data values.
+    map.data.forEach(function (d) {
        var uid = d[map.properties.unitId],
            val = d[map.properties.column],
            fill = map.colorScale(val);
@@ -30,27 +30,31 @@ var updateYear = function(newYear) {
            } else {
                unit.style('fill', fill);
            }
-           
+
            // New title with column and value.
            var text = map.properties.unitTitle(unit.datum());
            val = map.properties.format(val);
            unit.select('title').text('' + text + '\n\n' + map.properties.column + ': ' + val);
        }
-   });
-}
+    });
+}   
 
 var years = ['1962', '1967', '1972', '1977', '1982', '1987',
              '1992', '1997', '2002', '2007', '2012', '2014'];
 
 var stepYear = function() {
     if (typeof stepYear.i == 'undefined') stepYear.i = 0;
+    // move handle of slider
+    slider.setValue(years[stepYear.i]);
+    // update map
     updateYear(years[stepYear.i]);
     stepYear.i = (stepYear.i + 1) % years.length;
 }
 
-var animateIT = function() {
+var animateIt = function() {
     var interval = setInterval(stepYear, 1000),
         duration = 1000 * years.length + 1;
+    
     setTimeout(clearInterval, duration, interval);
 }
 
@@ -62,14 +66,19 @@ var map = d3.geomap.choropleth()
     .format(format)
     .legend(true)
     .unitId('Country Code')
-    .scale(0,100000)
+    .scale(0, 100000)
     .duration('1000');
+
+var slideYear = function(_slider) {
+    updateYear(_slider.value());
+}
 
 var slider = d3.slider()
     .min(years[0])
     .max(years[years.length-1])
     .tickValues(years)
     .stepValues(years)
+    .callback(slideYear)
     .tickFormat(d3.format("d"));
 
 d3.csv('water_res_full_formatted.csv', function(error, data) {
