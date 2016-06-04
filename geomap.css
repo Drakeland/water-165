@@ -21,14 +21,10 @@ h4 {
     font-weight: normal;
 }
 
-.description, h4, ul {
-    font-size: 10pt;
-}
-
 .description {
+    font-size: 12pt;
     padding: 0 200px;
 }
-
 #map {
     width: 1460px;
     height: 600px;
@@ -42,7 +38,7 @@ h4 {
 
 #play {
     vertical-align: top;
-    margin-left: 10px;
+    margin-left: 40px;
 }
 
 #slider {
