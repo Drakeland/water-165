@@ -48,7 +48,7 @@ var stepYear = function() {
     stepYear.i = (stepYear.i + 1) % years.length;
 }
 
-var animate = function() {
+var animateIT = function() {
     var interval = setInterval(stepYear, 1000),
         duration = 1000 * years.length + 1;
     setTimeout(clearInterval, duration, interval);
