@@ -11,7 +11,7 @@ p {
     text-align: center;
 }
 
-.units {
+#units {
     text-align: center;
     color: lightsteelblue;
     font-weight: 600;
@@ -21,18 +21,24 @@ h4 {
     font-weight: normal;
 }
 
-.description {
+#description {
     font-size: 12pt;
     padding: 0 200px;
 }
+
+#map-container {
+    
+}
+
 #map {
-    width: 1460px;
-    height: 600px;
-    margin: 0 auto 50px auto;
+    margin-left: 10px;
+}
+
+#tooltip {
+    
 }
 
 #interactivity {
-    margin-top: 140px;
     padding-top: 10px;
 }
 

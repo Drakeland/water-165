@@ -20,22 +20,55 @@
 <!-- tighter canvas -->
 <div class="containter-fluid">
     <div class="row">
-    <div class="col-md-12">
-    <h1>Global Renewable Water Resources per Capita</h1>
-    
-    <p class="description">1.2 billion people live in areas of physical water scarcity, a number projected to grow to 1.7 billion by 2025, according to the UN Dept. of Economic and Social Affairs. The map displays water scarcity levels of individual countries from 1962 to 2014 in five-year increments. This allows one to view regions where water levels are most abundant (blue) and scarce (red). A given year can be selected using the timelide slider below. <span class="units">The units of measurement are m<sup>3</sup>(H<sub>2</sub>O)/inhab/year.</span></p>
-    </div> <!--/col-md-12-->
         
     <div class="col-md-12">
+        <h1>Global Renewable Water Resources per Capita</h1>
+    
+        <p id="description">1.2 billion people live in areas of physical water scarcity, a number projected to grow to 1.7 billion by 2025, according to the UN Dept. of Economic and Social Affairs. The map displays water scarcity levels of individual countries from 1962 to 2014 in five-year increments. This allows one to view regions where water levels are most abundant (blue) and scarce (red). A given year can be selected using the timelide slider below. <span id="units">The units of measurement are m<sup>3</sup>(H<sub>2</sub>O)/inhab/year.</span></p>
+    </div> <!--/col-md-12-->
+    
+    <div class="col-md-10" id="map-container">
         <script type="text/javascript" src="geomap.js"></script>
 
         <div id="map"></div>
-        <div id="interactivity">
-            <button onclick="animateIt()" id="play" type="button" class="btn btn-info"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-
-            <div id="slider"></div>
+    </div>
+        
+    <div class="col-md-1">
+        <div class="well" id="tooltip">
+            <p>Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip <br>
+            Tooltip </p>
         </div>
-    </div> <!--/col-md-12-->
+    </div>
+        
+    <div class="col-md-12" id="interactivity">
+        <button onclick="animateIt()" id="play" type="button" class="btn btn-info"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+
+        <div id="slider"></div>
+    </div>
         
     </div> <!--/row-->
     
@@ -51,7 +84,7 @@
         <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/index.html">index.html</a></li> 
         <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/geomap.js">geomap.js</a></li>
         <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/geomap.css">geomap.css</a></li>
-        <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/water_resources_1yr.csv">water_resources_1yr.csv</a></li>
+        <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/water_resources_full_formatted.csv">water_res_full_formatted.csv</a></li>
     </ul>
     </div>
     
