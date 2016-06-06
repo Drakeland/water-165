@@ -1,5 +1,57 @@
 'use strict';
+var toolyears = [ "2014", "2012", "1992", "1982", "1972", "1962"];
 
+
+//returns string of tooltip info to be displayed
+function get_tool_text(country) {
+   var text = "Country: "+ country.Country+"<br>"; 
+   
+   text += get_avg_pct_changes(country);
+   
+   toolyears.filter(function(i) { return (country[i] != -1) }) //filter out years with no data
+            .forEach(function(yr) {
+               text+= ( yr + ": " + format(country[yr]) + "<br>");
+            });
+
+   return text;
+}
+
+//calculates average annual change over 10, 20 and 50 year periods  
+function get_avg_pct_changes(country) {
+   
+   var yr_1962 = country["1962"],
+       yr_1992 = country["1992"],
+       yr_2002 = country ["2002"], 
+       yr_2012 = country ["2012"];   
+   var pct_format = d3.format('.01f');
+   var chg_50, chg_20, chg_10;
+   
+   chg_50= (yr_2012 - yr_1962) /yr_1962 * 100; //50 year % change
+   chg_50 = pct_format(chg_50 / 50) + "%"; //annualize and format %change
+
+   chg_20 = (yr_2012 - yr_1992) /yr_1992 * 100; //25 year % change
+   chg_20 = pct_format(chg_20 / 20) + "%"; //annualize %change
+
+   chg_10 = (yr_2012 - yr_2002) /yr_2002 * 100; //50 year % change
+   chg_10 = pct_format(chg_10 / 10) + "%"; //annualize and format %change
+   
+   if (yr_1962 == -1) {
+      chg_50 = "N/A"; //if no data exists from 1962, print "N/A" for 50 year
+   } 
+   if (yr_1992 == -1) {
+      chg_20 = "N/A"; //if no data exists from 1992, print "N/A" for 20 year
+   } 
+   if (yr_2002 == -1) {
+      chg_10 = "N/A"; //if no data exists from 2002, print "N/A" for 10 year
+   } 
+   
+   var text_10_20_50 = "10-yr avg annual change: " + chg_10 + "<br>"
+                  + "20-yr avg annual change: " + chg_20 + "<br>"
+                  + "50-yr avg annual change: " + chg_50 + "<br>";
+   
+   return text_10_20_50;
+   
+}
 function addAccessor(obj, name, value) {
     obj[name] = function (_) {
         if (typeof _ === 'undefined') return obj.properties[name] || value;
@@ -408,7 +460,7 @@ var Geomap = (function () {
                 self.geo = geo;
                 self.svg.append('g').attr('class', 'units zoom').selectAll('path').data(topojson.feature(geo, geo.objects[self.properties.units]).features).enter().append('path').attr('class', function (d) {
                     return 'unit ' + self.properties.unitPrefix + '' + d.id;
-                }).attr('d', self.path).on('click', self.clicked.bind(self)).append('title').text(self.properties.unitTitle);
+                }).attr('d', self.path).on('click', self.clicked.bind(self));
                 self.update();
             });
         }
@@ -484,7 +536,9 @@ var Choropleth = (function (_Geomap) {
             self.data.forEach(function (d) {
                 var uid = d[self.properties.unitId],
                     val = d[self.properties.column],
-                    fill = self.colorScale(val);
+                    val_1962 = d[toolyears[0]],
+                    fill = self.colorScale(val),
+                    country_obj = d;
 
                 // selectAll must be called and not just select, otherwise the data
                 // attribute of the selected path object is overwritten with self.data.
@@ -494,10 +548,14 @@ var Choropleth = (function (_Geomap) {
                 if (!unit.empty()) {
                     if (self.properties.duration) unit.transition().duration(self.properties.duration).style('fill', fill);else unit.style('fill', fill);
 
-                    // New title with column and value.
-                    var text = self.properties.unitTitle(unit.datum());
-                    val = self.properties.format(val);
-                    unit.select('title').text('' + text + '\n\n' + self.properties.column + ': ' + val);
+                    unit.on("mouseover", function(d) {                  
+                                          
+                        d3.select("#value").html(get_tool_text(country_obj) );
+                     })		
+                     //define mousout tooltip behavior
+                    .on("mouseout", function(d) {	
+                              tool_div.classed("hidden", true);	
+                    })
                 }
             });
 
