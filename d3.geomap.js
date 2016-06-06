@@ -4,7 +4,7 @@ var toolyears = [ "2014", "2012", "1992", "1982", "1972", "1962"];
 
 //returns string of tooltip info to be displayed
 function get_tool_text(country) {
-   var text = "Country: "+ country.Country+"<br>"; 
+   var text =  "Avg Annual Change: "+"<br>"; 
    
    text += get_avg_pct_changes(country);
    
@@ -45,9 +45,9 @@ function get_avg_pct_changes(country) {
       chg_10 = "N/A"; //if no data exists from 2002, print "N/A" for 10 year
    } 
    
-   var text_10_20_50 = "10-yr avg annual change: " + chg_10 + "<br>"
-                  + "20-yr avg annual change: " + chg_20 + "<br>"
-                  + "50-yr avg annual change: " + chg_50 + "<br>";
+   var text_10_20_50 = "10-yr avg: " + chg_10 + "<br>"
+                  + "20-yr avg: " + chg_20 + "<br>"
+                  + "50-yr avg: " + chg_50 + "<br>";
    
    return text_10_20_50;
    
@@ -549,13 +549,9 @@ var Choropleth = (function (_Geomap) {
                     if (self.properties.duration) unit.transition().duration(self.properties.duration).style('fill', fill);else unit.style('fill', fill);
 
                     unit.on("mouseover", function(d) {                  
-                                          
-                        d3.select("#value").html(get_tool_text(country_obj) );
-                     })		
-                     //define mousout tooltip behavior
-                    .on("mouseout", function(d) {	
-                              tool_div.classed("hidden", true);	
-                    })
+                       //set tooltip values for each country 
+                        d3.select("#country_name").html("" + country_obj.Country+"<br>" ); d3.select("#tool_data").html(get_tool_text(country_obj) );
+                     });	
                 }
             });
 
@@ -583,7 +579,7 @@ var Choropleth = (function (_Geomap) {
                 hBox = undefined;
 
             var wFactor = 10,
-                hFactor = 3;
+                hFactor = 2.5;
 
             if (bounds === true) {
                 wBox = self.properties.width / wFactor;
@@ -607,7 +603,7 @@ var Choropleth = (function (_Geomap) {
                 hRect = hLegend / steps,
                 offsetYFactor = hFactor / hRect;
 
-            var legend = self.svg.append('g').attr('class', 'legend').attr('width', wBox).attr('height', hBox).attr('transform', 'translate(0,' + offsetY + ')');
+            var legend = self.svg.append('g').attr('class', 'legend').attr('width', wBox).attr('height', hBox).attr('transform', 'translate(50, ' + offsetY + ')');
 
             legend.append('rect').style('fill', '#fff').attr('class', 'legend-bg').attr('width', wBox).attr('height', hBox);
 
