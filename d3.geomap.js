@@ -6,7 +6,7 @@ var toolyears = [ "2014", "2012", "1992", "1982", "1972", "1962"];
 function get_tool_text(country) {
     var text = "<table id=\"tooltip-text\">";
 
-    text += "<tr><th>Country:</th><td>"+ country.Country+"</td></tr>";
+    text += "<tr><th>Country:</th><td>" + country.Country+"</td></tr>";
 
     text += get_avg_pct_changes(country);
 
@@ -556,7 +556,7 @@ var Choropleth = (function (_Geomap) {
                     if (self.properties.duration) unit.transition().duration(self.properties.duration).style('fill', fill);else unit.style('fill', fill);
 
                     unit.on("mouseover", function(d) {              
-                        d3.select("#value")
+                        d3.select("#tooltip")
                             .html(get_tool_text(country_obj));
 //                        console.log(get_tool_text(country_obj));
                      });
