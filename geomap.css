@@ -37,12 +37,12 @@ h4 {
 #tooltip, #directions {
     width: 260px;
     position: relative;
-    left: -50px;
+    left: -30px;
     font-size: 110%;
+    font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
 }
 
 #tooltip {
-<<<<<<< HEAD
     height: 276px;
 }
 
@@ -58,17 +58,14 @@ h4 {
 #tooltip-text td {
     text-align: right;
     float: right;
-=======
-   width: 190px;
-   font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
-   
-    
 }
-#country_name {
-   font-weight: bold;
-   font-size: 12pt;   
->>>>>>> origin/gh-pages
+
+#country-name {
+    text-align: center;
+    margin-top: 0;
+    font-weight: bold;
 }
+
 #interactivity {
     padding-top: 10px;
    padding-left: 20px;

@@ -4,10 +4,8 @@ var toolyears = [ "2014", "2012", "1992", "1982", "1972", "1962"];
 
 //returns string of tooltip info to be displayed
 function get_tool_text(country) {
-    var text = "<table id=\"tooltip-text\">";
-
-    text += "<tr><th>Country:</th><td>" + country.Country+"</td></tr>";
-
+    var text = "<h4 id=\"country-name\">" + country.Country + "</h4>";
+    text += "<table id=\"tooltip-text\">";
     text += get_avg_pct_changes(country);
 
     toolyears.filter(function(i) { return (country[i] != -1) }) //filter out years with no data
@@ -52,9 +50,9 @@ function get_avg_pct_changes(country) {
         chg_10 = "N/A"; //if no data exists from 2002, print "N/A" for 10 year
     } 
 
-    var text_10_20_50 = "<tr><th><abbr title=\"10-year average annual change\">10-year &Delta;:</abbr></th><td>" + chg_10 + "</td></tr>";
-    text_10_20_50 += "<tr><th><abbr title=\"20-year average annual change\">20-year &Delta;:</abbr></th><td>" + chg_20 + "</td></tr>";
-    text_10_20_50 += "<tr><th><abbr title=\"50-year average annual change\">50-year &Delta;:</abbr></th><td>" + chg_50 + "</td></tr>";
+    var text_10_20_50 = "<tr><th><abbr title=\"10-year average annual change\">10-year annual &Delta;:</abbr></th><td>" + chg_10 + "</td></tr>";
+    text_10_20_50 += "<tr><th><abbr title=\"20-year average annual change\">20-year annual &Delta;:</abbr></th><td>" + chg_20 + "</td></tr>";
+    text_10_20_50 += "<tr><th><abbr title=\"50-year average annual change\">50-year annual &Delta;:</abbr></th><td>" + chg_50 + "</td></tr>";
 
     return text_10_20_50;
    
