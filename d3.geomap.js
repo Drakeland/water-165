@@ -1,19 +1,26 @@
 'use strict';
-var toolyears = [ "2014", "2012", "1992", "1982", "1972", "1962"];
+var toolyears = ['1962', '1972', '1982', '1992', '2012', '2014'];
 
+function tool_format(d) {
+    if (d >= 100000) {
+        d = d/1000;
+        return d3.format(',.0f')(d) + ' K';
+    }
+    return d3.format(',.0f')(d);
+}
 
 //returns string of tooltip info to be displayed
 function get_tool_text(country) {
     var text = "<h4 id=\"country-name\">" + country.Country + "</h4>";
     text += "<table id=\"tooltip-text\">";
-    text += get_avg_pct_changes(country);
 
     toolyears.filter(function(i) { return (country[i] != -1) }) //filter out years with no data
         .forEach(function(yr) {
             text += "<tr><th>" + yr + ":</th><td>"
-                  + format(country[yr]) + "</td></tr>";
+                  + tool_format(country[yr]) + "</td></tr>";
         });
 
+    text += get_avg_pct_changes(country);
     text += "</table>"
     return text;
 }
@@ -21,40 +28,22 @@ function get_tool_text(country) {
 //calculates average annual change over 10, 20 and 50 year periods  
 function get_avg_pct_changes(country) {
 
-    var yr_1962 = country["1962"],
-        yr_1992 = country["1992"],
-        yr_2002 = country ["2002"], 
-        yr_2012 = country ["2012"];   
-    var pct_format = d3.format('.01f');
-    var chg_50, chg_20, chg_10;
+    var yr_1962 = country["1962"], 
+        yr_2012 = country ["2012"],  
+        pct_format = d3.format('.01f'),
+        chg_50, text_50;
    
-    chg_50 = (yr_2012 - yr_1962) /yr_1962 * 100; //50 year % change
-    chg_50 = pct_format(chg_50 / 50) + "%"; //annualize and format %change
-    chg_50.replace('-', '&minus;'); // replace dash with n-dash 
+    chg_50 = (yr_2012 - yr_1962) / yr_1962 * 100; // 50-year % change
+    chg_50 = pct_format(chg_50) + "%"; // format % change
+    chg_50.replace('-', '&minus;'); // replace dash with n-dash
 
-    chg_20 = (yr_2012 - yr_1992) /yr_1992 * 100; //25 year % change
-    chg_20 = pct_format(chg_20 / 20) + "%"; //annualize %change
-    chg_20.replace('-', '&minus;'); // replace dash with n-dash 
-    
-    chg_10 = (yr_2012 - yr_2002) /yr_2002 * 100; //50 year % change
-    chg_10 = pct_format(chg_10 / 10) + "%"; //annualize and format %change
-    chg_10.replace('-', '&minus;'); // replace dash with n-dash 
-    
     if (yr_1962 == -1) {
         chg_50 = "N/A"; //if no data exists from 1962, print "N/A" for 50 year
-    } 
-    if (yr_1992 == -1) {
-        chg_20 = "N/A"; //if no data exists from 1992, print "N/A" for 20 year
-    } 
-    if (yr_2002 == -1) {
-        chg_10 = "N/A"; //if no data exists from 2002, print "N/A" for 10 year
-    } 
+    }
 
-    var text_10_20_50 = "<tr><th><abbr title=\"10-year average annual change\">10-year annual &Delta;:</abbr></th><td>" + chg_10 + "</td></tr>";
-    text_10_20_50 += "<tr><th><abbr title=\"20-year average annual change\">20-year annual &Delta;:</abbr></th><td>" + chg_20 + "</td></tr>";
-    text_10_20_50 += "<tr><th><abbr title=\"50-year average annual change\">50-year annual &Delta;:</abbr></th><td>" + chg_50 + "</td></tr>";
+    text_50 = "<tr><th><abbr title=\"50-year average annual change\">50-year &Delta;:</abbr></th><td>" + chg_50 + "</td></tr>";
 
-    return text_10_20_50;
+    return text_50;
    
 }
 function addAccessor(obj, name, value) {
@@ -614,9 +603,9 @@ var Choropleth = (function (_Geomap) {
                 hRect = hLegend / steps,
                 offsetYFactor = hFactor / hRect;
 
-            var legend = self.svg.append('g').attr('class', 'legend').attr('width', wBox).attr('height', hBox).attr('transform', 'translate(50, ' + offsetY + ')');
+            var legend = self.svg.append('g').attr('class', 'legend').attr('width', wBox).attr('height', hBox).attr('transform', 'translate('+ (self.properties.width - 0.6*wBox) + ', 0)');
 
-            legend.append('rect').style('fill', '#fff').attr('class', 'legend-bg').attr('width', wBox).attr('height', hBox);
+            legend.append('rect').style('fill', '#fff').attr('class', 'legend-bg').attr('width', 0.60*wBox).attr('height', hBox);
 
             // Draw a rectangle around the color scale to add a border.
             legend.append('rect').attr('class', 'legend-bar').attr('width', wRect).attr('height', hLegend).attr('transform', tr);

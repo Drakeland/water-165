@@ -24,35 +24,25 @@
     <div class="col-md-12">
         <h1>Global Renewable Water Resources per Capita</h1>
     
-        <p id="description">1.2 billion people live in areas of physical water scarcity, a number projected to grow to 1.7 billion by 2025, according to the UN Dept. of Economic and Social Affairs. This map displays water scarcity levels of individual countries from 1962 to 2014 in five-year increments. Regions where water levels are most abundant as shown in blue and most scarce in red. Select a given year using the time slider below, or press play to see how the world has changed since 1962. <span id="units">The units of measurement are m<sup>3</sup>(H<sub>2</sub>O)/inhab/year.</span></p>
+        <p id="description">1.2 billion people live in areas of physical water scarcity, a number projected to grow to 1.7 billion by 2025. <span id="units">The units of measurement are m<sup>3</sup>(H<sub>2</sub>O)/inhab/year.</span></p>
     </div> <!--/col-md-12-->
-    
-    <div class="col-md-10" id="map-container">
+        
+    <div class="col-md-11" id="map-container">
         <script type="text/javascript" src="geomap.js"></script>
-
+        
+        <div class="well" id="tooltip">
+            <p>Hover over a country to view data.</p>
+        </div>
         <div id="map"></div>
         
-        
         <!-- slider and button div   -->
-       <div class="col-md-12" id="interactivity">
+       <div class="col-md-11 col-md-offset-1" id="interactivity">
            <button onclick="animateIt()" id="play" type="button" class="btn btn-info"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
 
            <div id="slider"></div>
        </div>
        
     </div>
-        
-    <div class="col-md-2">
-        <div class="well" id="directions">
-            <p>Click on a country to zoom in.</p>
-            <p>Hover over a country to view statistics.</p>
-        </div>
-        <div class="well" id="tooltip">
-        </div>
-    </div>
-       
-        
-      
         
     </div> <!--/row-->
     
