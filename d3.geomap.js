@@ -16,7 +16,7 @@ function get_tool_text(country) {
 
     toolyears.filter(function(i) { return (country[i] != -1) }) //filter out years with no data
         .forEach(function(yr) {
-            text += "<tr><th>" + yr + ":</th><td>"
+            text += "<tr><td>" + yr + ":</td><td>"
                   + tool_format(country[yr]) + "</td></tr>";
         });
 
@@ -41,7 +41,7 @@ function get_avg_pct_changes(country) {
         chg_50 = "N/A"; //if no data exists from 1962, print "N/A" for 50 year
     }
 
-    text_50 = "<tr><th><abbr title=\"50-year average annual change\">50-year &Delta;:</abbr></th><td>" + chg_50 + "</td></tr>";
+    text_50 = "<tr><td><abbr title=\"50-year average annual change\">50-year &Delta;:</abbr></td><td>" + chg_50 + "</td></tr>";
 
     return text_50;
    

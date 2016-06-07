@@ -21,11 +21,6 @@ h4 {
     font-weight: normal;
 }
 
-#description {
-    font-size: 12pt;
-    padding: 0 200px;
-}
-
 #map-container {
     padding-bottom: 100px;
     margin-left: -30px;
@@ -36,12 +31,12 @@ h4 {
 }
 
 #tooltip, #directions {
-    width: 260px;
+    width: 200px;
     position: absolute;
     float: left;
-    left: 130px;
+    left: 150px;
     top: 410px;
-    font-size: 110%;
+    font-size: 100%;
     font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
 }
 
@@ -53,12 +48,12 @@ h4 {
     width: 100%;
 }
 
-#tooltip-text th {
+#tooltip-text td:first-child {
     text-align: left;
     float: left;
 }
 
-#tooltip-text td {
+#tooltip-text td:nth-child(2) {
     text-align: right;
     float: right;
 }
@@ -66,7 +61,6 @@ h4 {
 #country-name {
     text-align: center;
     margin-top: 0;
-    font-weight: bold;
 }
 
 #interactivity {
