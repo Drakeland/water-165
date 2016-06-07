@@ -5,7 +5,7 @@ d3.slider = function module() {
   height=40, rect,
   rectHeight = 12,
   tickSize = 6,
-  margin = {top: 15, right: 15, bottom: 15, left: 25}, 
+  margin = {top: 20, right: 15, bottom: 15, left: 25}, 
   ticks = 0, tickValues, scale, tickFormat, dragger, width, 
   range = false,
   callbackFn, stepValues, focus;
@@ -63,7 +63,7 @@ d3.slider = function module() {
       }
       
       svg.append("g")
-      .attr("transform", "translate(0," + rectHeight + ")")
+      .attr("transform", "translate(0," + rectHeight/2 + ")")
       .call(axis)
       //.selectAll(".tick")
       //.data(tickValues, function(d) { return d; })
@@ -77,7 +77,7 @@ d3.slider = function module() {
       .append("g")
       .attr("class", "dragger")
       .attr("transform", function(d) {
-        return "translate(" + scale(d) + ")";
+        return "translate(" + scale(d)+")";
       }) 
       
       var displayValue = null;
@@ -89,7 +89,7 @@ d3.slider = function module() {
       
       dragger.append("text")
       .attr("x", 0)
-      .attr("y", -15)
+      .attr("y", -10)
       .attr("text-anchor", "middle")
       .attr("class", "draggertext")
       .text(displayValue);
@@ -168,7 +168,7 @@ d3.slider = function module() {
     // Move dragger
     svg.selectAll(".dragger").data(values)
     .attr("transform", function(d) {
-      return "translate(" + scale(d) + ")";
+      return "translate(" + scale(d) +")";
     });
     
     var displayValue = null;
@@ -224,6 +224,12 @@ d3.slider = function module() {
   slider.stepValues = function(_) {
     if (!arguments.length) return stepValues;
     stepValues = _;
+    return slider;
+  }
+  
+  slider.tickSize = function(_) {
+    if (!arguments.length) return tickSize;
+    tickSize = _;
     return slider;
   }
   

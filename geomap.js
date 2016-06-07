@@ -44,10 +44,11 @@ var years = ['1962', '1967', '1972', '1977', '1982', '1987',
 
 var stepYear = function() {
     if (typeof stepYear.i == 'undefined') stepYear.i = 0;
-    // move handle of slider
-    slider.setValue(years[stepYear.i]);
+    
     // update map
     updateYear(years[stepYear.i]);
+   // move handle of slider
+    slider.setValue(years[stepYear.i]);
     stepYear.i = (stepYear.i + 1) % years.length;
 }
 
@@ -86,7 +87,8 @@ var slider = d3.slider()
     .tickValues(years)
     .stepValues(years)
     .callback(slideYear)
-    .tickFormat(d3.format("d"));
+    .tickFormat(d3.format("d"))
+     .tickSize(12);
 
 d3.csv('water_res_full_formatted.csv', function(error, data) {
     if (error) console.log(error);

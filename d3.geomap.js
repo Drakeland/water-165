@@ -22,7 +22,7 @@ function get_tool_text(country) {
 
 //calculates average annual change over 10, 20 and 50 year periods  
 function get_avg_pct_changes(country) {
-   
+
     var yr_1962 = country["1962"],
         yr_1992 = country["1992"],
         yr_2002 = country ["2002"], 
@@ -558,12 +558,13 @@ var Choropleth = (function (_Geomap) {
                     unit.on("mouseover", function(d) {              
                         d3.select("#value")
                             .html(get_tool_text(country_obj));
-                        console.log(get_tool_text(country_obj));
+//                        console.log(get_tool_text(country_obj));
                      });
                      //define mousout tooltip behavior
 //                    .on("mouseout", function(d) {	
 //                        tool_div.classed("hidden", true);	
 //                    })
+
                 }
             });
 
@@ -591,7 +592,7 @@ var Choropleth = (function (_Geomap) {
                 hBox = undefined;
 
             var wFactor = 10,
-                hFactor = 3;
+                hFactor = 2.5;
 
             if (bounds === true) {
                 wBox = self.properties.width / wFactor;
@@ -615,7 +616,7 @@ var Choropleth = (function (_Geomap) {
                 hRect = hLegend / steps,
                 offsetYFactor = hFactor / hRect;
 
-            var legend = self.svg.append('g').attr('class', 'legend').attr('width', wBox).attr('height', hBox).attr('transform', 'translate(0,' + offsetY + ')');
+            var legend = self.svg.append('g').attr('class', 'legend').attr('width', wBox).attr('height', hBox).attr('transform', 'translate(50, ' + offsetY + ')');
 
             legend.append('rect').style('fill', '#fff').attr('class', 'legend-bg').attr('width', wBox).attr('height', hBox);
 
