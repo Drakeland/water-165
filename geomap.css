@@ -34,8 +34,29 @@ h4 {
     margin-left: 10px;
 }
 
+#tooltip, #directions {
+    width: 260px;
+    position: relative;
+    left: -50px;
+    font-size: 110%;
+}
+
 #tooltip {
-    width: 250px;
+    height: 276px;
+}
+
+#tooltip-text {
+    width: 100%;
+}
+
+#tooltip-text th {
+    text-align: left;
+    float: left;
+}
+
+#tooltip-text td {
+    text-align: right;
+    float: right;
 }
 
 #interactivity {
