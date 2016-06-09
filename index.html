@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Water Scarcity</title>
+    
+    <!-- CSS files-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="dependencies/d3.geomap.css">
+    <link rel="stylesheet" type="text/css" href="dependencies/d3.slider.css">
+    <link rel="stylesheet" type="text/css" href="geomap.css">
+    
+    
+    <!-- JS files-->
+    <script type= "text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type= "text/javascript" src="dependencies/d3.geomap.dependencies.min.js"></script>
+    <script type= "text/javascript" src="dependencies/d3.geomap.js"></script>
+    <script type= "text/javascript" src="dependencies/d3.slider.js"></script>
+</head>
+<body>
+<!-- tighter canvas -->
+<div class="containter">
+    
+    <div class="row" id="header-row">    
+        <!-- header and description -->
+        <div id="title">
+            <h1>Renewable<br>Water Resources<br>per Capita</h1>
+        </div>
+
+        <div id="description">
+            <p>
+                Clean, safe drinking water is scarce. 1.2 billion people live in areas of physical water scarcity, a number projected to grow to 1.8 billion by 2025. Growing populations, consumption practices, and climate change are the leading causes of severe scarcity and decreased water quality. Water scarcity can result in economic losses due to crop failure, limited food availability, loss of environmental biodiversity and heightened global conflict. Renewable water resources across the world are displayed below in units of m<sup>3</sup>(H<sub>2</sub>O)/inhab/year.
+            </p>
+        </div>
+    </div>
+    
+    <div class="row" id="interactivity-row">
+        <!-- map and tooltip-->
+        <div class="col-md-12" id="map-container">
+            <script type="text/javascript" src="geomap.js"></script>
+            <div id="map"></div>
+        </div>
+
+        <!-- slider and button div   -->
+        <div class="col-md-11 col-md-offset-1" id="interactivity">
+            <button onclick="animateIt()" id="play" type="button" class="btn btn-info" title="Animate data from 1962 to 2014">
+                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+            </button>
+
+            <div id="slider"></div>
+        </div>
+    </div> <!--/row-->
+    
+    <div class="row" id="bottom-row">
+        <div class="col-md-4">
+            <p>Created by Sermchai Chiwarak, Kevin Ek, James Kennedy, and Drake Pitts in collaboration with Suresh K Lodha and Ryan Brounley for CMPS165, Data Programming for Visualization, Spring 2016.<br>
+            Source code available <a href="https://github.com/Drakeland/water-165">here</a>.</p>
+        </div>
+
+        <div class="col-md-2">
+            <h4>Files Submitted</h4>
+            <ul>
+                <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/index.html">index.html</a></li> 
+                <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/geomap.js">geomap.js</a></li>
+                <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/geomap.css">geomap.css</a></li>
+                <li><a href="https://github.com/Drakeland/water-165/blob/gh-pages/water_resources_full_formatted.csv">water_res_full_formatted.csv</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-2">
+            <h4>Data Sources</h4>
+            <ul>
+                <li><a href="http://www.fao.org/nr/water/aquastat/data/query/index.html">FAO Aquastat Database</a></li>
+                <li><a href="http://www.un.org/waterforlifedecade/scarcity.shtml">Water scarcity - UNDESA</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h4>Code/Visualization Sources</h4>
+            <ul>
+                <li><a href="https://d3-geomap.github.io/map/choropleth/world/">Chloropleth Map: World</a></li>
+                <li><a href="https://d3-geomap.github.io/">d3.geomap</a></li>
+                <li><a href="http://chimera.labs.oreilly.com/books/1230000000345/ch10.html">Interactive Data Visualization for the Web (Ch. 12)</a></li>
+                <li><a href="
+        http://sujeetsr.github.io/d3.slider/">d3.slider</a></li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>
