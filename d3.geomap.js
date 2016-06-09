@@ -16,7 +16,7 @@ function tool_format(d) {
 function get_tool_text(country) {
     var text = "<h4 id=\"country-name\">" + country.Country + "</h4>";
     text += "<table id=\"tooltip-text\">";
-    text += "<span class=\"units col-md-offset-2\">m<sup>3</sup>(H<sub>2</sub>O)/inhab/year.</span>";
+
     toolyears.filter(function(i) { return (country[i] != -1) }) //filter out years with no data
         .forEach(function(yr) {
             text += "<tr><td>" + yr + ":</td><td>"
@@ -678,27 +678,13 @@ var Choropleth = (function (_Geomap) {
     }, {
         key: 'createTooltip',
         value: function createTooltip(_left, _top) {
-           
-           //get map css styles
-           var tooltip, map_height, max_y, tt_top;
-           
-           map_height= document.getElementById("map").clientHeight;
-           
-           
-           d3.select('#map').append('div')
+            d3.select('#map').append('div')
                 .attr('id', 'tooltip')
                 .attr('class', 'well')
               .append('p')
                 .text('Hover over a country to view data.');
-         
-           tooltip = document.getElementById('tooltip');
-           
-           max_y = map_height - tooltip.clientHeight;
-           
-           //adjust top to avoid laying over time slider
-           tt_top = (_top > max_y) ? max_y : _top;
-           
-            tooltip.style.top = tt_top + 'px';
+            var tooltip = document.getElementById('tooltip');
+            tooltip.style.top = _top + 'px';
             tooltip.style.left = _left + 'px';
             
         }

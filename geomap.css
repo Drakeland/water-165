@@ -37,7 +37,6 @@ body {
 
 #description {
     margin-left: 0;
-    padding-top: 10px;
     padding-right: 10px;
     height: 6em;
 }
@@ -49,7 +48,7 @@ body {
     text-align: justify;
 }
 
-span.units {
+span#units {
     text-align: center;
     color: lightsteelblue;
     font-weight: 600;
@@ -88,14 +87,11 @@ h4 {
 /*    left: 80px;*/
 /*    top: 500px;*/
     background-color: rgba(245, 245, 245, 0.97);
-    font-size: 1em;
+    font-size: 100%;
 }
 
 #tooltip-text {
     width: 100%;
-   
-   font-size-adjust:auto;
-   
 }
 
 #tooltip-text td:first-child {
