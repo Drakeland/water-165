@@ -16,7 +16,7 @@ function tool_format(d) {
 function get_tool_text(country) {
     var text = "<h4 id=\"country-name\">" + country.Country + "</h4>";
     text += "<table id=\"tooltip-text\">";
-    text += "<span class=\"units col-md-offset-2\">m<sup>3</sup>(H<sub>2</sub>O)/inhab/year</span>";
+    
     toolyears.filter(function(i) { return (country[i] != -1) }) //filter out years with no data
         .forEach(function(yr) {
             text += "<tr><td>" + yr + ":</td><td>"
@@ -25,6 +25,7 @@ function get_tool_text(country) {
 
     text += get_avg_pct_changes(country);
     text += "</table>"
+    text += "<p class=\"units\">m<sup>3</sup>(H<sub>2</sub>O)/inhab/year</p>";
     return text;
 }
 

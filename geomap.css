@@ -49,12 +49,6 @@ body {
     text-align: justify;
 }
 
-span.units {
-    text-align: center;
-    color: lightsteelblue;
-    font-weight: 600;
-}
-
 h4 {
     font-weight: normal;
 }
@@ -81,14 +75,19 @@ h4 {
 
 #tooltip {
     width: 200px;
-    height: 246px;
+    height: 260px;
     position: absolute;
     z-index: 999;
     float: left;
-/*    left: 80px;*/
-/*    top: 500px;*/
     background-color: rgba(245, 245, 245, 0.97);
     font-size: 100%;
+}
+
+#tooltip p.units {
+    margin: 0;
+    text-align: center;
+    color: steelblue;
+    font-weight: 600;
 }
 
 #tooltip-text {
