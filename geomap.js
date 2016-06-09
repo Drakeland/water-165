@@ -1,7 +1,7 @@
 
 // https://d3-geomap.github.io/map/choropleth/world/
 
-var transition_duration = 700;
+var transition_duration = 900;
 
 var format = function(d) {
     d = d / 1000;
@@ -91,6 +91,8 @@ var slider = d3.slider()
     .callback(slideYear)
     .tickFormat(d3.format("d"))
     .tickSize(12);
+
+
 
 d3.csv('water_res_full_formatted.csv', function(error, data) {
     if (error) console.log(error);

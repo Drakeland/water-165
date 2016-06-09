@@ -78,21 +78,16 @@ h4 {
     padding: 0;
 }
 
-#map .units.zoom {
-/*    width: 100%;*/
-}
-
 #tooltip {
     width: 200px;
     height: 246px;
     position: absolute;
     z-index: 999;
     float: left;
-    left: 80px;
-    top: 520px;
-   background-color: rgba(245, 245, 245, 0.97);
+/*    left: 80px;*/
+/*    top: 500px;*/
+    background-color: rgba(245, 245, 245, 0.97);
     font-size: 100%;
-    font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
 }
 
 #tooltip-text {
