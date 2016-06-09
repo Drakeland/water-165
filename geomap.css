@@ -82,7 +82,9 @@ h4 {
     background-color: rgba(245, 245, 245, 0.97);
     font-size: 100%;
 }
-
+#tooltip p {
+    text-align: center;
+}
 #tooltip p.units {
     margin: 0;
     text-align: center;
