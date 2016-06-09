@@ -6,15 +6,17 @@ body {
     overflow-x: hidden;
 }
 
-#description {
+#header-row {
     margin: 0;
-    height: 8em;
+    height: 6em;
 }
 
-#description .col-md-3 {
-    width: 330px;
+#title {
+    float: left;
     z-index: 900;
-    margin-right: 80px;
+    width: 20%;
+    margin-left: 10px;
+    margin-right: 1%;
     padding-bottom: 10px;
     -webkit-border-bottom-right-radius: 90px;
     -moz-border-radius-bottomright: 90px;
@@ -22,7 +24,7 @@ body {
     background-color: #ffffff;
 }
 
-#description h1 {
+#title h1 {
     background-color: transparent;
     margin: 10px 0px 0px 0px;
     padding-left: 4px;
@@ -33,8 +35,14 @@ body {
     border-left: 2px solid lightsteelblue;
 }
 
+#description {
+    margin-left: 0;
+    padding-right: 10px;
+    height: 6em;
+}
+
 #description p {
-    margin: 10px 0px 0px -90px;
+    margin: 10px 0px 0px -50px;
     z-index: 901;
     font-size: 115%;
     text-align: justify;
