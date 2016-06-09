@@ -13,27 +13,29 @@ d3.slider = function module() {
   function slider(selection) {
     selection.each(function() {
       div = d3.select(this).classed('d3slider', true);
-      width = parseInt(div.style("width"), 10)-(margin.left 
-                                                + margin.right);
+      width = parseInt(div.style("width"), 10)
+                      - (margin.left + margin.right);
 
       value = value || min; 
-      scale = d3.scale.linear().domain([min, max]).range([0, width])
-      .clamp(true);
+      scale = d3.scale.linear()
+          .domain([min, max])
+          .range([0, width])
+          .clamp(true);
       
       // SVG 
       svg = div.append("svg")
-      .attr("class", "d3slider-axis")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + 
-            "," + margin.top + ")");
+          .attr("class", "d3slider-axis")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
 
       // Range rect
       svg.append("rect")
-      .attr("class", "d3slider-rect-range")
-      .attr("width", width)
-      .attr("height", rectHeight);
+          .attr("class", "d3slider-rect-range")
+          .attr("width", width)
+          .attr("height", rectHeight);
      
       // Range rect 
       if (range) {
@@ -45,8 +47,8 @@ d3.slider = function module() {
       
       // Axis      
       var axis = d3.svg.axis()
-      .scale(scale)
-      .orient("bottom");
+          .scale(scale)
+          .orient("bottom");
       
       if (ticks != 0) {
         axis.ticks(ticks);
@@ -88,25 +90,25 @@ d3.slider = function module() {
       }
       
       dragger.append("text")
-      .attr("x", 0)
-      .attr("y", -10)
-      .attr("text-anchor", "middle")
-      .attr("class", "draggertext")
-      .text(displayValue);
+          .attr("x", 0)
+          .attr("y", -10)
+          .attr("text-anchor", "middle")
+          .attr("class", "draggertext")
+          .text(displayValue);
 
       dragger.append("circle")
-      .attr("class", "dragger-outer")
-      .attr("r", 8)
-      .attr("transform", function(d) {
-        return "translate(0,6)";
-      });
+          .attr("class", "dragger-outer")
+          .attr("r", 8)
+          .attr("transform", function(d) {
+            return "translate(0,6)";
+          });
       
       dragger.append("circle")
-      .attr("class", "dragger-inner")
-      .attr("r", 4)
-      .attr("transform", function(d) {
-        return "translate(0,6)";
-      });
+          .attr("class", "dragger-inner")
+          .attr("r", 4)
+          .attr("transform", function(d) {
+            return "translate(0,6)";
+          });
 
 
       // Enable dragger drag 

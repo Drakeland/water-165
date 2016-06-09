@@ -41,7 +41,7 @@ function get_avg_pct_changes(country) {
         chg_50 = "N/A"; //if no data exists from 1962, print "N/A" for 50 year
     }
 
-    text_50 = "<tr><td><abbr title=\"50-year average annual change\">50-year &Delta;:</abbr></td><td>" + chg_50 + "</td></tr>";
+    text_50 = "<tr><td>50-year change:</td><td>" + chg_50 + "</td></tr>";
 
     return text_50;
    
@@ -437,7 +437,7 @@ var Geomap = (function () {
 
             if (!self.properties.translate) self.properties.translate = [self.properties.width / 2, self.properties.height / 2];
 
-            self.svg = selection.append('svg').attr('width', self.properties.width).attr('height', self.properties.height);
+            self.svg = selection.append('svg').attr('width', self.properties.width).attr('height', 0.84*self.properties.height);
 
             self.svg.append('rect').attr('class', 'background').attr('width', self.properties.width).attr('height', self.properties.height).on('click', self.clicked.bind(self));
 

@@ -1,6 +1,8 @@
 
 // https://d3-geomap.github.io/map/choropleth/world/
 
+var transition_duration = 700;
+
 var format = function(d) {
     d = d / 1000;
     return d3.format(',.0f')(d) + ' K';
@@ -53,8 +55,8 @@ var stepYear = function() {
 }
 
 var animateIt = function() {
-    var interval = setInterval(stepYear, 1000),
-        duration = 1000 * years.length + 1;
+    var interval = setInterval(stepYear, transition_duration),
+        duration = transition_duration * years.length + 1;
     
     // disable play button
     document.getElementById("play").setAttribute('disabled', 'disabled');
@@ -75,7 +77,7 @@ var map = d3.geomap.choropleth()
     .legend(true)
     .unitId('Country Code')
     .scale(0, 100000)
-    .duration('1000');
+    .duration(transition_duration);
 
 var slideYear = function(_slider) {
     updateYear(_slider.value());
@@ -88,7 +90,7 @@ var slider = d3.slider()
     .stepValues(years)
     .callback(slideYear)
     .tickFormat(d3.format("d"))
-     .tickSize(12);
+    .tickSize(12);
 
 d3.csv('water_res_full_formatted.csv', function(error, data) {
     if (error) console.log(error);
@@ -99,6 +101,7 @@ d3.csv('water_res_full_formatted.csv', function(error, data) {
        .call(map.draw, map);
     
     d3.select('#slider').call(slider);
+    slider.setValue(years[years.length-1]);
 });
 
 

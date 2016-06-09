@@ -1,17 +1,46 @@
 body {
-    font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
+    font-family: "Lato", "Source Sans Pro", "Myriad Pro", 
+        "Lucida Grande Regular", "Kozuka Gothic Pro", 
+        "Helvetica Light", sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-h1 {
-    text-align: center;
+#description {
+    margin: 0;
+    height: 8em;
+}
+
+#description .col-md-3 {
+    width: 330px;
+    z-index: 900;
+    margin-right: 80px;
+    padding-bottom: 10px;
+    -webkit-border-bottom-right-radius: 90px;
+    -moz-border-radius-bottomright: 90px;
+    border-bottom-right-radius: 90px;
+    background-color: #ffffff;
+}
+
+#description h1 {
+    background-color: transparent;
+    margin: 10px 0px 0px 0px;
+    padding-left: 4px;
     color: steelblue;
+    text-align: left;
+    vertical-align: top;
+    line-height: 0.95;
+    border-left: 2px solid lightsteelblue;
 }
 
-p {
-    text-align: center;
+#description p {
+    margin: 10px 0px 0px -90px;
+    z-index: 901;
+    font-size: 115%;
+    text-align: justify;
 }
 
-#units {
+span#units {
     text-align: center;
     color: lightsteelblue;
     font-weight: 600;
@@ -21,27 +50,41 @@ h4 {
     font-weight: normal;
 }
 
+#interactivity-row {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 #map-container {
-    padding-bottom: 100px;
-    margin-left: -30px;
+    width: 100%;
+    margin: -14px 0 0 0;
+    padding: 0px;
 }
 
 #map {
-    margin-bottom: -30px;
+    margin: 0;
+    padding: 0;
 }
 
-#tooltip, #directions {
-    width: 200px;
-    position: absolute;
-    float: left;
-    left: 150px;
-    top: 410px;
-    font-size: 100%;
-    font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
+#map .units.zoom {
+/*    width: 100%;*/
 }
 
 #tooltip {
+    width: 200px;
     height: 246px;
+    position: absolute;
+    z-index: 999;
+    float: left;
+    left: 80px;
+    top: 520px;
+   background-color: rgba(245, 245, 245, 0.97);
+    font-size: 100%;
+    font-family: "Kozuka Gothic Pro", "Helvetica Light", sans-serif;
 }
 
 #tooltip-text {
@@ -61,25 +104,39 @@ h4 {
 #country-name {
     text-align: center;
     margin-top: 0;
+    height: 2.8em;
 }
 
 #interactivity {
-    padding-top: 10px;
-   padding-left: 20px;
+    padding-top: 15px;
+    padding-left: 20px;
 }
 
 #play {
     vertical-align: top;
-    margin-left: 20px;
+    margin: 8px 0 0 22px;
 }
 
 #slider {
     display: inline-block;
     width: 80%;
-    margin-left: 20px;
+    margin: 0 0 0 15px;
     padding: 0;
 }
 
+#slider .d3slider-axis text {
+    font-size: 12px;
+}
+
+#slider text.draggertext {
+    font-size: 14px;
+}
+
 #bottom-row {
-    margin: 0 10px 0 10px;
+    margin: 15px 10px 0 10px;
+}
+
+#bottom-row div:first-child p:first-child {
+    padding-top: 2em;
+    text-align: center;
 }
