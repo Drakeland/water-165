@@ -69,7 +69,7 @@ var animateIt = function() {
 }
 
 var map = d3.geomap.choropleth()
-    .geofile('countries.json')
+    .geofile('dependencies/countries.json')
     .column('2014')
     .colors(colorbrewer.RdYlBu[9])
     .domain([1000, 10000])
@@ -94,7 +94,7 @@ var slider = d3.slider()
 
 
 
-d3.csv('water_res_full_formatted.csv', function(error, data) {
+d3.csv('water_res.csv', function(error, data) {
     if (error) console.log(error);
     
     console.log(data);
